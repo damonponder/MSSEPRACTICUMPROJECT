@@ -16,7 +16,7 @@ const toolbar = props => (
             <div className='spacer'></div>
             <div className='toolbar_navigation-items'>
                 <ul>
-                    <li><a href="/execDashboard">Graphs</a></li>
+                    <li><a href="/execDashboard">Reports</a></li>
                     <li><a href="/spreadsheet">Spreadsheet</a></li>
                     <li><a href="/presentation">Presentation</a></li>
                     <li><a href='/'>Logout</a></li>

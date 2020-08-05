@@ -1,0 +1,33 @@
+.toggle-switch{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+.toggle-text{
+    display: flex;
+    justify-content: center;
+    
+}
+.observation-report-button{
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 6px;
+    padding: 5px 0;
+
+}
+.incident-report-button{
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 6px;
+    padding: 5px 0;
+}
+.observation-button{
+    background-color: black;
+    color: #fee53b;
+    margin-right: 6px;
+}
+.incident-button{
+    background-color: black;
+    color: #fee53b;
+    margin-left: 6px;
+}

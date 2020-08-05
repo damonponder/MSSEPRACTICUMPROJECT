@@ -6,6 +6,9 @@ import DoughNutChart from '../doughnut/doughnut'
 import BarChart from '../bar/bar'
 import Toolbar from '../Toolbar/ToolBar';
 import SideDrawer from '../SideDrawer/SideDrawer';
+import ToggleButton from '../ToggleButton/ToggleButton'
+
+
 
 export default class Admin extends Component {
     
@@ -36,8 +39,9 @@ export default class Admin extends Component {
                 <div style={{height:'100%'}}>
                     <Toolbar drawerClickHandler={this.drawerToggleClickHandler}/>
                     {sideDrawer}
-                    <Line/>
+                    <ToggleButton />
                     <Pie/>
+                    <Line/>
                     <DoughNutChart/>
                     <BarChart/>
                      

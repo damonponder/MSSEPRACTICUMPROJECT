@@ -27,7 +27,7 @@ const legend = {
   position: "bottom",
   labels: {
     fontColor: "#323130",
-    fontSize: 14
+    fontSize: 10
   }
 };
 

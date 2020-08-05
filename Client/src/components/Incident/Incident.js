@@ -1,9 +1,16 @@
 import React, {Component} from 'react';
+import Pie from '../pie/pie';
+import Line from '../line/line';
+import DoughNutChart from '../doughnut/doughnut';
+import BarChart from '../bar/bar';
 import Toolbar from '../Toolbar/ToolBar';
 import SideDrawer from '../SideDrawer/SideDrawer';
+import ToggleButton from '../ToggleButton/ToggleButton';
 
 
-export default class Presentation extends Component{
+
+export default class IncidentDashboard extends Component {
+    
     state = {
         sideDrawerOpen: false
     };
@@ -31,6 +38,12 @@ export default class Presentation extends Component{
                 <div style={{height:'100%'}}>
                     <Toolbar drawerClickHandler={this.drawerToggleClickHandler}/>
                     {sideDrawer}
+                    <ToggleButton />
+                    <Pie/>
+                    <Line/>
+                    <DoughNutChart/>
+                    <BarChart/>
+                     
                 </div>
             </React.Fragment>
         )
