@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
+import './presentation.style.scss'
 import Toolbar from '../Toolbar/ToolBar';
 import SideDrawer from '../SideDrawer/SideDrawer';
 
 
-export default class Presentation extends Component{
+
+export default class PresentationDashboard extends Component {
+    
     state = {
         sideDrawerOpen: false
     };
@@ -31,6 +34,7 @@ export default class Presentation extends Component{
                 <div style={{height:'100%'}}>
                     <Toolbar drawerClickHandler={this.drawerToggleClickHandler}/>
                     {sideDrawer}
+                    
                 </div>
             </React.Fragment>
         )

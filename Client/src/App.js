@@ -4,11 +4,10 @@ import SignIn from './components/home/signin';
 import SignUp from './components/registration/signup';
 import Admin from './components/admin/admin';
 import SpreadSheet from './components/spreadsheet/spreadsheet';
-import Presentation from './components/presentation/presentation';
 import IncidentDashboard from './components/Incident/Incident';
 import history from "../src/Utils/history";
+import PresentationDashboard from './components/presentation/presentation';
 import './App.css';
-
 
 
 
@@ -23,7 +22,7 @@ class App extends Component {
               <Route exact path="/signup" component={SignUp}/>
               <Route exact path="/execDashboard" component={Admin}/>
               <Route exact path="/spreadSheet" component={SpreadSheet}/>
-              <Route exact path="/presenation" component={Presentation}/>
+              <Route exact path="/presentation" component={PresentationDashboard}/>
               <Route exact path="/incident" component={IncidentDashboard}/>
 
 
