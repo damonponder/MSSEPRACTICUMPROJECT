@@ -25,7 +25,7 @@ export default class SignUp extends Component {
         };
 
        axios
-       .post("http://localhost:8080/api/auth/signup", 
+       .post("http://52.14.115.8/api/auth/signup", 
             
             {
                 firstname: this.state.firstname,

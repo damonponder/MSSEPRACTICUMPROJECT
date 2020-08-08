@@ -19,7 +19,7 @@ const toolbar = props => (
                     <li><a href="/execDashboard">Reports</a></li>
                     <li><a href="/spreadsheet">Spreadsheet</a></li>
                     <li><a href="/presentation">Presentation</a></li>
-                    <li><a href='/'>Logout</a></li>
+                    <button style={{background: 'black'}}><a href='/'>Logout</a></button>
 
                 </ul>
             </div>
