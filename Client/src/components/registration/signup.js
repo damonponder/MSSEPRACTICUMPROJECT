@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios'
 import './registration.style.scss';
-
+import instance from '../../Axios/axios'
 
 export default class SignUp extends Component {
     constructor(props) {
@@ -23,30 +23,47 @@ export default class SignUp extends Component {
         const options = {
             headers: { "Content-Type": "application/json" }
         };
-
-       axios
-       .post("http://52.14.115.8/api/auth/signup", 
-            
-            {
-                firstname: this.state.firstname,
-                lastname: this.state.lastname,
-                username: this.state.username,
-                email: this.state.email,
-                password: this.state.password
-            },
-            options
-        )
-        .then(response => response.data)
+        instance.post('/api/auth/signup', {
+            firstname: this.state.firstname,
+            lastname: this.state.lastname,
+            username: this.state.username,
+            email: this.state.email,
+            password: this.state.password
+          }).then(response => response.data)
         .then(json => {
-            console.log(json);
-            if (json.error) return false;
-            // handle success case
-            this.props.history.push('/signin');
+          console.log(json);
+          if (json.error) return false;
+          this.props.dispatch1(json.accessToken, json.email, json.roles);
+          this.props.history.push('/signin');
         })
         .catch(error => {
-            console.log(error);
+          console.log(error);
         });
-    };
+      };
+
+    //    axios
+    //    .post("http://3.12.131.254/api/auth/signup", 
+            
+    //         {
+    //             firstname: this.state.firstname,
+    //             lastname: this.state.lastname,
+    //             username: this.state.username,
+    //             email: this.state.email,
+    //             password: this.state.password
+    //         },
+    //         options
+    //     )
+    //     .then(response => response.data)
+    //     .then(json => {
+    //         console.log(json);
+    //         if (json.error) return false;
+    //         // handle success case
+    //         this.props.history.push('/signin');
+    //     })
+    //     .catch(error => {
+    //         console.log(error);
+    //     });
+    // };
 
     handleChange = event => {
         const { value, name } = event.target;

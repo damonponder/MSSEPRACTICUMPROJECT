@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
 import "./login.style.scss";
+import instance from '../../Axios/axios';
+
 
 class SignIn extends Component {
   constructor(props) {
@@ -24,25 +26,41 @@ class SignIn extends Component {
       headers: { "Content-Type": "application/json" }
     };
 
-    axios
-      .post(
-        "http://localhost:8080/api/auth/signin",
-        {
-          username: this.state.username,
-          password: this.state.password
-        },
-        options
-      )
-      .then(response => response.data)
-      .then(json => {
-        console.log(json);
-        if (json.error) return false;
-        this.props.dispatch1(json.accessToken, json.email, json.roles);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  };
+
+    instance.post('/api/auth/signin', 
+    {
+      username: this.state.username,
+      password: this.state.password
+    }).then(response => response.data)
+  .then(json => {
+    console.log(json);
+    if (json.error) return false;
+    this.props.dispatch1(json.accessToken, json.email, json.roles);
+  })
+  .catch(error => {
+    console.log(error);
+  });
+};
+
+  //   axios
+  //     .post(
+  //       "http://3.12.131.254/api/auth/signin",
+  //       {
+  //         username: this.state.username,
+  //         password: this.state.password
+  //       },
+  //       options
+  //     )
+  //     .then(response => response.data)
+  //     .then(json => {
+  //       console.log(json);
+  //       if (json.error) return false;
+  //       this.props.dispatch1(json.accessToken, json.email, json.roles);
+  //     })
+  //     .catch(error => {
+  //       console.log(error);
+  //     });
+  // };
 
   handleChange = event => {
     const { value, name } = event.target;
@@ -51,7 +69,7 @@ class SignIn extends Component {
 
   render() {
     const { isAuthenticated, roles } = this.props.jwt;
-    if (isAuthenticated && roles.length > 0)
+    if (isAuthenticated && roles.length >= 0)
       return <Redirect to="/execDashboard" />;
 
     return (
