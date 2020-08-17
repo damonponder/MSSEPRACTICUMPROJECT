@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { add as jwtAdd } from "../../redux/jwt/actions";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
-import axios from "axios";
 import "./login.style.scss";
 import instance from '../../Axios/axios';
 
@@ -13,8 +12,8 @@ class SignIn extends Component {
     super(props);
 
     this.state = {
-      username: "",
-      password: "",
+      Username: "",
+      Password: "",
       roles: null
     };
   }
@@ -29,8 +28,8 @@ class SignIn extends Component {
 
     instance.post('/api/auth/signin', 
     {
-      username: this.state.username,
-      password: this.state.password
+      username: this.state.Username,
+      password: this.state.Password
     }).then(response => response.data)
   .then(json => {
     console.log(json);

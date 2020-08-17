@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import axios from 'axios'
 import './registration.style.scss';
 import instance from '../../Axios/axios'
 
