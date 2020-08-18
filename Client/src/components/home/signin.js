@@ -12,8 +12,8 @@ class SignIn extends Component {
     super(props);
 
     this.state = {
-      Username: "",
-      Password: "",
+      username: "",
+      password: "",
       roles: null
     };
   }
@@ -28,13 +28,13 @@ class SignIn extends Component {
 
     instance.post('/api/auth/signin', 
     {
-      username: this.state.Username,
-      password: this.state.Password
+      Username: this.state.username,
+      Password: this.state.password
     }).then(response => response.data)
   .then(json => {
     console.log(json);
     if (json.error) return false;
-    this.props.dispatch1(json.accessToken, json.email, json.roles);
+    this.props.dispatch1(json.accessToken, json.Password, json.Username);
   })
   .catch(error => {
     console.log(error);
@@ -81,7 +81,7 @@ class SignIn extends Component {
               name="username"
               placeholder="User Name"
               onChange={this.handleChange}
-              value={this.state.username}
+              value={this.state.Username}
               label="username"
               required
             />
@@ -90,7 +90,7 @@ class SignIn extends Component {
               name="password"
               type="password"
               placeholder="Enter Password"
-              value={this.state.password}
+              value={this.state.Password}
               onChange={this.handleChange}
               label="password"
               required
@@ -117,8 +117,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    dispatch1: (token, email, accessLevel) => {
-      dispatch(jwtAdd(token, email, accessLevel));
+    dispatch1: (token, Username, Password) => {
+      dispatch(jwtAdd(token, Username, Password));
     }
   };
 };

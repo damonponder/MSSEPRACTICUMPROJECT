@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './registration.style.scss';
+import { Link } from "react-router-dom";
 import instance from '../../Axios/axios'
 
 export default class SignUp extends Component {
@@ -23,16 +24,16 @@ export default class SignUp extends Component {
             headers: { "Content-Type": "application/json" }
         };
         instance.post('/api/auth/signup', {
-            firstname: this.state.firstname,
-            lastname: this.state.lastname,
-            username: this.state.username,
-            email: this.state.email,
-            password: this.state.password
+            Firstname: this.state.firstname,
+            Lastname: this.state.lastname,
+            Username: this.state.username,
+            Email: this.state.email,
+            Password: this.state.password
           }).then(response => response.data)
         .then(json => {
           console.log(json);
           if (json.error) return false;
-          this.props.dispatch1(json.accessToken, json.email, json.roles);
+          this.props.dispatch1(json.accessToken,json.Firstname,json.Lastname, json.Username,json.Email,json.Password,);
           this.props.history.push('/signin');
         })
         .catch(error => {
@@ -78,7 +79,7 @@ export default class SignUp extends Component {
                     className="firstName-input"
                     name="firstname"
                     placeholder="Enter First Name"
-                    value = {this.state.firstname}
+                    value = {this.state.Firstname}
                     onChange={this.handleChange}
                     label="firstName"
                     required
@@ -87,7 +88,7 @@ export default class SignUp extends Component {
                     className="lastName-input"
                     name="lastname"
                     placeholder="Enter Last Name"
-                    value = {this.state.lastname}
+                    value = {this.state.Lastname}
                     onChange={this.handleChange}
                     label="lastName"
                     required
@@ -96,7 +97,7 @@ export default class SignUp extends Component {
                     className="username-input"
                     name="username"
                     placeholder="User Name"
-                    value = {this.state.username}
+                    value = {this.state.Username}
                     onChange={this.handleChange}
                     label="UserName"
                     required
@@ -106,7 +107,7 @@ export default class SignUp extends Component {
                     name="email"
                     placeholder="Enter Email"
                     onChange={this.handleChange}
-                    value={this.state.email}
+                    value={this.state.Email}
                     label="UserEmail"
                     required
                 />
@@ -115,7 +116,7 @@ export default class SignUp extends Component {
                     name="password"
                     type="password"
                     placeholder="Enter Password"
-                    value={this.state.password}
+                    value={this.state.Password}
                     onChange={this.handleChange}
                     label="password"
                     required
@@ -125,12 +126,14 @@ export default class SignUp extends Component {
                     name="password2"
                     type="password"
                     placeholder="Please Enter Matching Password"
-                    // value={this.state.password}
                     onChange={this.handleChange}
                     label="password2"
                     required
                 />
                 <button className="submit-registration" onSubmit={this.signup}>Submit Registration Form</button>
+                <Link to="/signin" className="nav-link">
+                    Return to Login
+                    </Link>
                 <br/>
             </form>
         </div>
