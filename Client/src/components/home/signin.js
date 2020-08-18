@@ -28,13 +28,13 @@ class SignIn extends Component {
 
     instance.post('/api/auth/signin', 
     {
-      Username: this.state.username,
-      Password: this.state.password
+      username: this.state.username,
+      password: this.state.password
     }).then(response => response.data)
   .then(json => {
     console.log(json);
     if (json.error) return false;
-    this.props.dispatch1(json.accessToken, json.Password, json.Username);
+    this.props.dispatch1(json.accessToken, json.password, json.username);
   })
   .catch(error => {
     console.log(error);
@@ -81,7 +81,7 @@ class SignIn extends Component {
               name="username"
               placeholder="User Name"
               onChange={this.handleChange}
-              value={this.state.Username}
+              value={this.state.username}
               label="username"
               required
             />
@@ -90,7 +90,7 @@ class SignIn extends Component {
               name="password"
               type="password"
               placeholder="Enter Password"
-              value={this.state.Password}
+              value={this.state.password}
               onChange={this.handleChange}
               label="password"
               required

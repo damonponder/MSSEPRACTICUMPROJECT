@@ -24,16 +24,16 @@ export default class SignUp extends Component {
             headers: { "Content-Type": "application/json" }
         };
         instance.post('/api/auth/signup', {
-            Firstname: this.state.firstname,
-            Lastname: this.state.lastname,
-            Username: this.state.username,
-            Email: this.state.email,
-            Password: this.state.password
+            firstname: this.state.firstname,
+            lastname: this.state.lastname,
+            username: this.state.username,
+            email: this.state.email,
+            password: this.state.password
           }).then(response => response.data)
         .then(json => {
           console.log(json);
           if (json.error) return false;
-          this.props.dispatch1(json.accessToken,json.Firstname,json.Lastname, json.Username,json.Email,json.Password,);
+          this.props.dispatch1(json.accessToken,json.firstname,json.lastname, json.username,json.email,json.password);
           this.props.history.push('/signin');
         })
         .catch(error => {
@@ -79,7 +79,7 @@ export default class SignUp extends Component {
                     className="firstName-input"
                     name="firstname"
                     placeholder="Enter First Name"
-                    value = {this.state.Firstname}
+                    value = {this.state.firstname}
                     onChange={this.handleChange}
                     label="firstName"
                     required
@@ -88,7 +88,7 @@ export default class SignUp extends Component {
                     className="lastName-input"
                     name="lastname"
                     placeholder="Enter Last Name"
-                    value = {this.state.Lastname}
+                    value = {this.state.lastname}
                     onChange={this.handleChange}
                     label="lastName"
                     required
@@ -97,7 +97,7 @@ export default class SignUp extends Component {
                     className="username-input"
                     name="username"
                     placeholder="User Name"
-                    value = {this.state.Username}
+                    value = {this.state.username}
                     onChange={this.handleChange}
                     label="UserName"
                     required
@@ -107,7 +107,7 @@ export default class SignUp extends Component {
                     name="email"
                     placeholder="Enter Email"
                     onChange={this.handleChange}
-                    value={this.state.Email}
+                    value={this.state.email}
                     label="UserEmail"
                     required
                 />
@@ -116,7 +116,7 @@ export default class SignUp extends Component {
                     name="password"
                     type="password"
                     placeholder="Enter Password"
-                    value={this.state.Password}
+                    value={this.state.password}
                     onChange={this.handleChange}
                     label="password"
                     required
