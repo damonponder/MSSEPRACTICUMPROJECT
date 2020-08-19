@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-    baseURL: 'http://localhost:8080'
+    baseURL: 'https://floating-earth-66732.herokuapp.com'
 });
 
 instance.defaults.headers.post["Content-Type"] = "application/json";

@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
 import './registration.style.scss';
+import { add as jwtAdd } from "../../redux/jwt/actions";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import instance from '../../Axios/axios'
+import { Redirect } from "react-router-dom";
 
-export default class SignUp extends Component {
+class SignUp extends Component {
     constructor(props) {
         super(props)
 
@@ -13,7 +16,7 @@ export default class SignUp extends Component {
             username:"",
             email: "",
             password: "",
-            password2: ""
+            
         };
     }
 
@@ -34,7 +37,7 @@ export default class SignUp extends Component {
           console.log(json);
           if (json.error) return false;
           this.props.dispatch1(json.accessToken,json.firstname,json.lastname, json.username,json.email,json.password);
-          this.props.history.push('/signin');
+          
         })
         .catch(error => {
           console.log(error);
@@ -70,6 +73,9 @@ export default class SignUp extends Component {
         this.setState({ [name]: value });
       };
     render() {
+        const { isAuthenticated } = this.props.jwt;
+        if (isAuthenticated)
+          return <Redirect to="/signin" />;
         return (
             <React.Fragment>
         <h1 className="registration-title">Registration Form</h1>
@@ -141,3 +147,19 @@ export default class SignUp extends Component {
         )
     }
 }
+
+const mapStateToProps = state => {
+    return {
+      jwt: state.jwt
+    };
+  };
+  
+  const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+      dispatch1: (token, firstName, lastName, username,email, password) => {
+        dispatch(jwtAdd(token, firstName, lastName, username,email, password));
+      }
+    };
+  };
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

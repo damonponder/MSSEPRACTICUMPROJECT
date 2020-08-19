@@ -14,7 +14,7 @@ class SignIn extends Component {
     this.state = {
       username: "",
       password: "",
-      roles: null
+      
     };
   }
 
@@ -68,7 +68,7 @@ class SignIn extends Component {
 
   render() {
     const { isAuthenticated, roles } = this.props.jwt;
-    if (isAuthenticated && roles.length >= 0)
+    if (isAuthenticated )
       return <Redirect to="/execDashboard" />;
 
     return (
@@ -117,8 +117,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    dispatch1: (token, Username, Password) => {
-      dispatch(jwtAdd(token, Username, Password));
+    dispatch1: (token, username, password) => {
+      dispatch(jwtAdd(token, username, password));
     }
   };
 };
